@@ -47,6 +47,7 @@ body{margin:0;min-height:100%;display:flex;justify-content:center;align-items:ce
 *{box-sizing:border-box}
 button,input,select{font-family:inherit;color:inherit}
 button{cursor:pointer}
+[hidden]{display:none!important}
 button:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid var(--orange);outline-offset:2px}
 
 @media (min-width:900px){html{font-size:19px}}
@@ -101,6 +102,20 @@ main{position:relative;min-height:0}
 .tally strong{display:block;font-size:1.5rem;font-variant-numeric:tabular-nums}
 .tally .bus strong{color:var(--leaf)} .tally .walkc strong{color:var(--orange)}
 #verdict{font-weight:700;font-size:.92rem;min-height:1.5em}
+.choose{border:2px dashed var(--orange);background:var(--orange-soft);border-radius:16px;padding:10px 12px;font-size:.9rem;line-height:1.6;display:flex;flex-direction:column;gap:8px}
+.choose b.ttl{color:var(--orange);font-size:.8rem}
+.choose.done{border-style:solid;border-color:var(--leaf);background:var(--leaf-soft)}
+.choose.done b.ttl{color:var(--leaf)}
+.chrow{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.chbtn{border:2px solid var(--line);background:var(--glass-strong);border-radius:12px;padding:7px 14px;font-weight:800;font-size:.95rem;transition:.2s}
+.chbtn:hover{transform:translateY(-2px);border-color:var(--leaf)}
+.chbtn[aria-pressed="true"]{border-color:var(--leaf);background:var(--leaf);color:#fff}
+.choose select{border:2px solid var(--line);background:var(--glass-strong);border-radius:10px;padding:5px 6px;font-size:.88rem;font-weight:700;max-width:100%}
+.flow{display:flex;align-items:center;gap:8px;flex-wrap:wrap;font-weight:800}
+.flow .pill{background:var(--glass-strong);border-radius:99px;padding:3px 12px}
+.flow .arrow{color:var(--orange)}
+.cellbtn:disabled{opacity:.45;cursor:not-allowed}
+.btn:disabled{opacity:.45;cursor:not-allowed;transform:none}
 .ktable{width:100%;border-collapse:separate;border-spacing:4px;font-size:.88rem;table-layout:fixed}
 .ktable thead th:first-child{width:24%}
 #p0 .tblwrap{height:100%} .ktable{height:100%}
@@ -147,8 +162,20 @@ main{position:relative;min-height:0}
 .chip:hover:not(:disabled){transform:translateY(-1px)}
 .chip:disabled{opacity:.35;cursor:default}
 .addrow{display:flex;gap:6px}
+.hintbtn{align-self:flex-start;border:2px solid var(--gl-line);background:var(--gl-soft);color:var(--gl-ink);border-radius:99px;padding:5px 14px;font-weight:800;font-size:.84rem;transition:.2s}
+.hintbtn:hover{border-color:var(--gl)}
+.hintbtn[aria-expanded="true"]{background:var(--gl);border-color:var(--gl);color:#fff}
+.hintbox{border:2px solid var(--gl-line);background:var(--gl-soft);border-radius:14px;padding:8px 10px;display:flex;flex-direction:column;gap:6px;font-size:.82rem;line-height:1.5}
+.hintbox .hq{color:var(--gl-ink);font-weight:700}
+.hchips{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:5px}
+.hchip{border:2px solid var(--gl-line);background:var(--card);color:var(--ink);border-radius:99px;padding:3px 10px;font-size:.8rem;font-weight:700;transition:.2s;text-align:left}
+.hchip small{color:var(--muted);font-weight:400;margin-left:4px}
+.hchip:hover:not(:disabled){border-color:var(--gl)}
+.hchip:disabled{opacity:.4;cursor:default}
 .build .right{display:flex;flex-direction:column;gap:8px;min-width:0}
-.btable{width:100%;border-collapse:separate;border-spacing:4px;font-size:.86rem}
+.btable{width:100%;border-collapse:separate;border-spacing:4px;font-size:.86rem;table-layout:fixed}
+.btable thead th:first-child{width:26%}
+.btable th{overflow-wrap:anywhere}
 .btable thead th{background:var(--line);border-radius:10px;padding:6px}
 .btable thead th:nth-child(2){color:var(--leaf)} .btable thead th:nth-child(3){color:var(--orange)}
 .btable tbody th{background:var(--leaf-soft);border-radius:10px;padding:6px;width:26%;text-align:left;font-size:.84rem}
@@ -158,6 +185,14 @@ main{position:relative;min-height:0}
 .pick.on{border-color:var(--ok);background:var(--ok-soft)}
 .pick.on::after{content:"◎";position:absolute;right:6px;top:3px;color:var(--ok);font-weight:800}
 .pick .ph{color:var(--muted)}
+.pickw{display:flex;align-items:stretch;gap:4px;min-height:46px;border:2px solid transparent;background:var(--glass-strong);border-radius:10px;padding:3px;transition:.2s}
+.pickw:hover{border-color:var(--line)}
+.pickw.on{border-color:var(--ok);background:var(--ok-soft)}
+.ptxt{flex:1;min-width:0;border:0;background:transparent;border-radius:8px;padding:4px 6px;font-size:.82rem;line-height:1.45}
+.ptxt::placeholder{color:var(--muted)}
+.pmark{flex:0 0 auto;width:42px;border:2px dashed var(--line);border-radius:8px;background:transparent;color:var(--muted);font-weight:800;font-size:1.1rem;transition:.2s}
+.pmark:hover{border-color:var(--ok);color:var(--ok)}
+.pickw.on .pmark{border-style:solid;border-color:var(--ok);background:var(--ok);color:#fff}
 .empty{padding:22px;text-align:center;color:var(--muted);border:2px dashed var(--line);border-radius:14px;font-size:.9rem}
 .conclude{display:flex;flex-wrap:wrap;align-items:center;gap:6px;font-size:.92rem}
 .conclude select{border:2px solid var(--line);background:var(--glass-strong);border-radius:10px;padding:5px 6px;font-size:.9rem;font-weight:700;max-width:100%}
@@ -171,6 +206,11 @@ main{position:relative;min-height:0}
 .card.sel{border-color:var(--orange);transform:translateY(-3px) scale(1.04);box-shadow:0 6px 14px rgba(0,0,0,.14)}
 .card.match{border-color:var(--ok);background:var(--ok-soft)}
 .card.diff{border-color:var(--warn);background:var(--warn-soft)}
+.card.mine{border-style:dashed;border-color:var(--leaf)}
+.card.mine.own{border-style:solid;border-color:var(--gl);background:var(--gl-soft)}
+.card .x{margin-left:6px;color:var(--muted);font-weight:800}
+.addcard{display:flex;gap:6px}
+.addcard input{flex:1;min-width:0;border:2px solid var(--line);background:var(--glass-strong);border-radius:10px;padding:6px 8px;font-size:.85rem}
 .board{display:grid;grid-template-columns:auto 1fr auto;grid-template-rows:auto 1fr auto;gap:8px;min-height:0;height:100%}
 .ax{display:flex;align-items:center;justify-content:center;gap:10px}
 .ax.top{grid-column:2;grid-row:1} .ax.bottom{grid-column:2;grid-row:3}
@@ -284,6 +324,7 @@ main{position:relative;min-height:0}
         <div class="side">
           <div class="bubble walk"><b>歩き派の理由</b>「何となく、歩いていきたい気分なんだ！」</div>
           <div class="bubble point"><b>ポイント</b>「何となく」で選ばずに、<strong>観点</strong>（くらべるときのものさし）を立ててくらべよう。表の「？」をタップして、中身を見てみよう。</div>
+          <div class="choose" id="choose"></div>
           <div class="weather">
             <span>予定の日の天気：</span>
             <div class="seg" id="wx">
@@ -329,6 +370,7 @@ main{position:relative;min-height:0}
             <input id="custom" maxlength="12" placeholder="じぶんで観点を書く">
             <button class="btn" id="addCustom">追加</button>
           </div>
+          <button class="hintbtn" id="hintBtn" aria-expanded="false">💡 観点のヒント</button>
         </div>
         <div class="right">
           <span class="label">③ それぞれの観点で、よいほうをタップして◎をつける</span>
@@ -343,6 +385,7 @@ main{position:relative;min-height:0}
             <button class="btn ghost" id="reset2">もう一度</button>
           </div>
           <div id="summary"></div>
+          <div class="hintbox" id="hintBox" hidden></div>
         </div>
       </div>
     </section>
@@ -354,6 +397,10 @@ main{position:relative;min-height:0}
           <span class="label">「わたしの住む町」のカード</span>
           <div class="muted" style="font-size:.82rem;line-height:1.5">カードをタップ → 入れたい場所をタップ。おいたカードをもう一度タップするともどるよ。</div>
           <div class="cards" id="tray"></div>
+          <div class="addcard">
+            <input id="myCard" maxlength="12" placeholder="じぶんの町のことを書く">
+            <button class="btn" id="addCard">カードを足す</button>
+          </div>
           <div style="display:flex;gap:8px;flex-wrap:wrap">
             <button class="btn primary" id="check3">教科書とくらべる</button>
             <button class="btn ghost" id="reset3">もう一度</button>
@@ -447,7 +494,7 @@ function renderK(){
         if(bothOpen && r.win(wx)===side) td.classList.add('win');
       }else{
         const b=document.createElement('button'); b.className='cellbtn'; b.textContent='？';
-        b.setAttribute('aria-label',r.k+'を見る');
+        b.setAttribute('aria-label',r.k+'を見る'); b.disabled=!firstPick;
         b.onclick=()=>{opened.add(id); renderK();};
         td.appendChild(b);
       }
@@ -464,14 +511,51 @@ function renderK(){
     v.textContent = wx==='rain'
       ? '雨の日は「天気」の観点でバスに◎。バスのほうがよさそう！観点を一つふやすと、答えが変わったね。'
       : '晴れなら2対2で引き分け。どの観点を大事にするかで答えが決まるね。天気を「雨」にするとどうなる？';
-  }else{ v.className='muted'; v.textContent='「？」をぜんぶひらくと、どちらがよいか考えられるよ。'; }
+  }else{ v.className='muted'; v.textContent= firstPick ? '「？」をぜんぶひらくと、どちらがよいか考えられるよ。' : 'まず上で、バスか歩きかをえらんでね。'; }
+  document.getElementById('openAll').disabled=!firstPick;
+  renderChoose();
+}
+/* ---- さいしょと最後にえらぶ ---- */
+let firstPick=null, lastPick=null, lastKey='', lastDone=false;
+const SIDE={bus:'直通バス', walk:'徒歩'};
+function renderChoose(){
+  const box=document.getElementById('choose'); if(!box) return;
+  const btns=(cur,fn)=>['bus','walk'].map(s=>`<button class="chbtn" data-s="${s}" aria-pressed="${cur===s}">${s==='bus'?'🚌':'👟'} ${SIDE[s]}</button>`).join('');
+  box.className='choose';
+  if(!firstPick){
+    box.innerHTML=`<b class="ttl">さいしょに えらぼう</b><span>美術館へ行くなら、どっちがいい？ 理由は考えずに、パッとえらんでね。</span><div class="chrow">${btns(null)}</div>`;
+    box.querySelectorAll('.chbtn').forEach(b=>b.onclick=()=>{ firstPick=b.dataset.s; renderK(); });
+    return;
+  }
+  const first=`<span class="pill">さいしょ：${SIDE[firstPick]}（何となく）</span>`;
+  if(lastDone){
+    box.className='choose done';
+    const same = lastPick===firstPick;
+    box.innerHTML=`<b class="ttl">さいしょと最後をくらべよう</b><div class="flow">${first}<span class="arrow">▶</span><span class="pill">最後：${SIDE[lastPick]}（「${esc(lastKey)}」の観点で）</span></div>
+      <span>${same?'えらんだものは同じでも、こんどは<b>理由</b>が言えるようになったね！':'観点を立ててくらべたら、えらぶものが<b>変わった</b>ね！'}</span>`;
+    return;
+  }
+  if(opened.size<10){
+    box.innerHTML=`<b class="ttl">さいしょに えらんだもの</b><div class="flow">${first}</div><span class="muted">表の「？」をひらいて、観点ごとにくらべよう。</span>`;
+    return;
+  }
+  box.innerHTML=`<b class="ttl">最後に もう一度 えらぼう</b><span>観点を立ててくらべたら、どっちがいい？</span>
+    <div class="chrow">${btns(lastPick)}</div>
+    <div class="chrow">いちばん大事な観点：<select id="lastKeySel"><option value="">えらぶ</option>${kRows.map(r=>`<option${r.k===lastKey?' selected':''}>${r.k}</option>`).join('')}</select>
+    <button class="btn accent" id="lastGo">きめる</button></div>`;
+  box.querySelectorAll('.chbtn').forEach(b=>b.onclick=()=>{ lastPick=b.dataset.s; lastKey=document.getElementById('lastKeySel').value; renderChoose(); });
+  document.getElementById('lastKeySel').onchange=e=>{ lastKey=e.target.value; };
+  document.getElementById('lastGo').onclick=()=>{
+    lastKey=document.getElementById('lastKeySel').value;
+    if(!lastPick||!lastKey){ bubu(); return; }
+    lastDone=true; pinpon(); party(); renderChoose();
+  };
 }
 document.querySelectorAll('#wx button').forEach(b=>b.onclick=()=>{
   wx=b.dataset.w; document.querySelectorAll('#wx button').forEach(x=>x.setAttribute('aria-pressed',x===b)); renderK();
 });
 document.getElementById('openAll').onclick=()=>{ kRows.forEach((r,i)=>{opened.add(i+'bus');opened.add(i+'walk');}); renderK(); };
-document.getElementById('reset0').onclick=()=>{ opened.clear(); wx='sun'; document.querySelectorAll('#wx button').forEach(x=>x.setAttribute('aria-pressed',x.dataset.w==='sun')); renderK(); };
-renderK();
+document.getElementById('reset0').onclick=()=>{ opened.clear(); wx='sun'; firstPick=null; lastPick=null; lastKey=''; lastDone=false; document.querySelectorAll('#wx button').forEach(x=>x.setAttribute('aria-pressed',x.dataset.w==='sun')); renderK(); };
 
 /* ===== ② クイズ ===== */
 const KAN=['移動時間','移動料金','目的地でのすごし方','移動中のすごし方','天気'];
@@ -494,18 +578,19 @@ function renderQ(){
     <div class="qmeta"><span>${qi+1} / ${QS.length} もん</span><span>せいかい ${score}</span></div>
     <div class="bar"><i style="width:${qi/QS.length*100}%"></i></div>
     <div class="box fade"><div class="qtype">${Q.t}</div><p class="qtext">${Q.q}</p></div>
-    <div class="opts">${Q.o.map((o,i)=>`<button class="opt fade" data-i="${i}">${o}</button>`).join('')}</div>
+    <div class="opts">${shuffle(Q.o.map((_,i)=>i)).map(i=>`<button class="opt fade" data-i="${i}">${Q.o[i]}</button>`).join('')}</div>
     <div class="nextrow" id="nxrow"></div>
     <div class="feedback" id="fb"></div>`;
   quiz.querySelectorAll('.opt').forEach(b=>b.onclick=()=>answer(+b.dataset.i));
 }
 function answer(i){
-  const Q=QS[qi], btns=quiz.querySelectorAll('.opt');
+  const Q=QS[qi], btns=[...quiz.querySelectorAll('.opt')];
+  const byI=k=>btns.find(b=>+b.dataset.i===k);
   btns.forEach(b=>b.disabled=true);
-  btns[Q.a].classList.add('correct');
+  byI(Q.a).classList.add('correct');
   const fb=document.getElementById('fb');
   if(i===Q.a){ score++; pinpon(); fb.innerHTML=`<b class="o">⭕ せいかい！</b> ${Q.e}`; }
-  else{ btns[i].classList.add('wrong'); bubu(); fb.innerHTML=`<b class="x">✖ ざんねん。</b> ${Q.e}`; }
+  else{ byI(i).classList.add('wrong'); bubu(); fb.innerHTML=`<b class="x">✖ ざんねん。</b> ${Q.e}`; }
   fb.classList.add('fade');
   const nx=document.createElement('button'); nx.className='btn primary fade';
   nx.textContent= qi===QS.length-1 ? 'けっかを見る' : 'つぎへ ▶';
@@ -524,6 +609,8 @@ function renderResult(){
 }
 renderQ();
 
+renderK();
+
 /* ===== ③ 表をつくろう ===== */
 const THEMES=[
   {id:'rain', label:'☂ かさ と レインコート', note:'校外学習に持っていく雨具', a:'かさ', b:'レインコート', k:{
@@ -540,6 +627,22 @@ const THEMES=[
     'しんらいできるか':['出版前に何人もが確かめている。','まちがった情報もまじっている。'],
     '読みやすさ':['図や写真がせいりされている。','情報が多すぎて、まよう。'],
     '使える場所':['どこでも読める。','タブレットとネットがいる。']
+  }},
+  {id:'letter', label:'✉ 手紙 と メール', note:'遠くに住むおばあちゃんに、お礼をつたえるとき', a:'手紙', b:'メール', k:{
+    'とどく速さ':['とどくまでに何日かかかる。','送ると、すぐにとどく。'],
+    'お金':['切手や便せんにお金がかかる。','ほとんどかからない。'],
+    '気持ちのつたわり方':['手書きの字で、気持ちがつたわる。','字がみんな同じで、気持ちがつたわりにくい。'],
+    '手軽さ':['書いて、ポストまで出しに行く。','タブレットやスマホから、すぐ送れる。'],
+    'のこしておけるか':['手にとって、何度も読み返せる。','消えてしまうこともある。'],
+    '写真や絵を入れられるか':['絵をかいたり、写真を入れたりできる。','写真や動画をかんたんにつけられる。']
+  }},
+  {id:'play', label:'⚽ 外遊び と 教室遊び', note:'クラスみんなで遊ぶ日の、休み時間', a:'外遊び', b:'教室遊び', k:{
+    '体を動かせるか':['思いきり走り回れる。','あまり体を動かせない。'],
+    '天気':['雨の日はできない。','雨の日でもできる。'],
+    '遊べる人数':['広いので、大人数で遊べる。','せまいので、大人数だときゅうくつ。'],
+    '安全さ':['転んで、けがをすることがある。','けがをすることが少ない。'],
+    '時間のむだ':['くつをはきかえて、行き帰りに時間がかかる。','すぐに遊びはじめられる。'],
+    'まわりへのめいわく':['大きな声を出しても、だいじょうぶ。','さわぐと、となりのクラスにめいわくになる。']
   }},
   {id:'free', label:'✏ じぶんで決める', note:'くらべたいものを書こう', a:'', b:'', k:{
     'かかる時間':null,'お金':null,'安全さ':null,'楽しさ':null,'使いやすさ':null,'みんなの人数':null
@@ -579,6 +682,7 @@ function renderTable(){
     h+=`<tr><th>${esc(r.k)}<button class="del" data-del="${i}" aria-label="${esc(r.k)}をけす">×</button></th>`;
     ['a','b'].forEach((s,j)=>{
       const txt = hint ? hint[j] : '<span class="ph">こちらがよい</span>';
+      if(!hint){ h+=`<td><div class="pickw ${r.pick===s?'on':''}"><input class="ptxt" data-r="${i}" data-s="${s}" maxlength="20" placeholder="ここに書く" value="${esc((r.t&&r.t[s])||'')}"><button class="pmark" data-r="${i}" data-s="${s}" aria-label="こちらがよい" aria-pressed="${r.pick===s}">◎</button></div></td>`; return; }
       h+=`<td><button class="pick ${r.pick===s?'on':''}" data-r="${i}" data-s="${s}">${txt}</button></td>`;
     });
     h+='</tr>';
@@ -589,6 +693,10 @@ function renderTable(){
   wrap.querySelectorAll('.pick').forEach(b=>b.onclick=()=>{
     const r=rows[+b.dataset.r]; r.pick = r.pick===b.dataset.s ? null : b.dataset.s; renderTable(); renderSelects();
   });
+  wrap.querySelectorAll('.pmark').forEach(b=>b.onclick=()=>{
+    const r=rows[+b.dataset.r]; r.pick = r.pick===b.dataset.s ? null : b.dataset.s; renderTable(); renderSelects();
+  });
+  wrap.querySelectorAll('.ptxt').forEach(inp=>inp.addEventListener('input',()=>{ const r=rows[+inp.dataset.r]; if(!r.t) r.t={a:'',b:''}; r.t[inp.dataset.s]=inp.value; }));
   wrap.querySelectorAll('.del').forEach(b=>b.onclick=()=>{ rows.splice(+b.dataset.del,1); renderAll3(); });
 }
 function renderSelects(){
@@ -599,7 +707,7 @@ function renderSelects(){
   if([...sw.options].some(o=>o.value===pw)) sw.value=pw;
   if([...sk.options].some(o=>o.value===pk)) sk.value=pk;
 }
-function renderAll3(){ renderThemes(); renderChips(); renderTable(); renderSelects(); }
+function renderAll3(){ renderThemes(); renderChips(); renderTable(); renderSelects(); if(typeof renderHints==='function') renderHints(); }
 function esc(s){ return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
 nameA.addEventListener('input',()=>{renderTable();renderSelects();});
 nameB.addEventListener('input',()=>{renderTable();renderSelects();});
@@ -609,6 +717,21 @@ function addCustom(){
   rows.push({k,pick:null}); inp.value=''; renderAll3();
 }
 document.getElementById('addCustom').onclick=addCustom;
+const HINTS=[
+  ['時間','どれくらい時間がかかる？'],['お金','お金はかかる？'],['安全さ','けがやきけんはない？'],
+  ['べんりさ','使いやすい？かんたん？'],['楽しさ','楽しめる？'],['大きさ・重さ','持ち運びやすい？'],
+  ['天気','雨や風の日はどう？'],['人数','何人で使える？'],['自然・かんきょう','自然にやさしい？'],['じょうぶさ','長く使える？こわれにくい？']
+];
+function renderHints(){
+  const box=document.getElementById('hintBox'); if(box.hidden) return;
+  box.innerHTML=`<span class="hq">思いつかないときは、こんなことを考えてみよう。タップすると観点になるよ。</span><div class="hchips">${
+    HINTS.map(([k,q],i)=>`<button class="hchip" data-h="${i}" ${(rows.some(r=>r.k===k)||rows.length>=MAXR)?'disabled':''}>${k}<small>${q}</small></button>`).join('')}</div>`;
+  box.querySelectorAll('.hchip').forEach(b=>b.onclick=()=>{ const k=HINTS[+b.dataset.h][0]; if(rows.length>=MAXR||rows.some(r=>r.k===k)) return; rows.push({k,pick:null}); renderAll3(); });
+}
+document.getElementById('hintBtn').onclick=()=>{
+  const box=document.getElementById('hintBox'), btn=document.getElementById('hintBtn');
+  box.hidden=!box.hidden; btn.setAttribute('aria-expanded',!box.hidden); if(!box.hidden) box.classList.add('fade'); renderHints();
+};
 document.getElementById('custom').addEventListener('keydown',e=>{ if(e.key==='Enter') addCustom(); });
 document.getElementById('doSum').onclick=()=>{
   const out=document.getElementById('summary');
@@ -635,6 +758,7 @@ const ITEMS=[
   {n:'児童館',z:'bl'},{n:'商店街',z:'bl'},{n:'動物園',z:'bl'},
   {n:'児童館の本が少ない',z:'br'},{n:'歩道がせまい道',z:'br'}
 ];
+const BASE=ITEMS.length;
 let place={}, sel=null;
 const ZN={tl:'自然 × 守りたい',tr:'自然 × 変えたい',bl:'人や物 × 守りたい',br:'人や物 × 変えたい'};
 function shuffle(a){ for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];} return a; }
@@ -643,9 +767,13 @@ function renderQuad(){
   const tray=document.getElementById('tray'); tray.innerHTML='';
   document.querySelectorAll('.zone').forEach(z=>{ z.querySelectorAll('.card').forEach(c=>c.remove()); z.classList.toggle('ready',sel!==null); });
   order.forEach(i=>{
-    const b=document.createElement('button'); b.className='card'+(sel===i?' sel':''); b.textContent=ITEMS[i].n;
+    const b=document.createElement('button'); b.className='card'+(sel===i?' sel':'')+(ITEMS[i].mine?' mine':''); b.textContent=ITEMS[i].n; b.dataset.i=i;
+    if(ITEMS[i].mine && !place[i]){
+      const x=document.createElement('span'); x.className='x'; x.textContent='×'; x.title='けす';
+      x.onclick=e=>{ e.stopPropagation(); removeMine(i); }; b.appendChild(x);
+    }
     if(place[i]){
-      b.onclick=e=>{ e.stopPropagation(); delete place[i]; sel=null; clearMarks(); renderQuad(); };
+      b.onclick=e=>{ e.stopPropagation(); if(sel!==null){ place[sel]=place[i]; } else { delete place[i]; } sel=null; clearMarks(); renderQuad(); };
       document.querySelector(`.zone[data-z="${place[i]}"]`).appendChild(b);
     }else{
       b.onclick=()=>{ sel = sel===i?null:i; renderQuad(); };
@@ -653,27 +781,46 @@ function renderQuad(){
     }
   });
   if(!tray.children.length) tray.innerHTML='<span class="muted" style="font-size:.85rem">ぜんぶおけたね！「教科書とくらべる」をおそう。</span>';
+  document.getElementById('addCard').disabled = ITEMS.length-BASE>=6;
 }
 document.querySelectorAll('.zone').forEach(z=>z.addEventListener('click',()=>{
   if(sel===null) return; place[sel]=z.dataset.z; sel=null; clearMarks(); renderQuad();
 }));
 function clearMarks(){ document.getElementById('qmsg').innerHTML=''; }
+function addMine(){
+  const inp=document.getElementById('myCard'), n=inp.value.trim(), msg=document.getElementById('qmsg');
+  if(!n) return;
+  if(ITEMS.length-BASE>=6){ msg.innerHTML='<span style="color:var(--ng)">じぶんのカードは6まいまでだよ。</span>'; return; }
+  if(ITEMS.some(it=>it.n===n)){ msg.innerHTML='<span style="color:var(--ng)">同じカードがもうあるよ。</span>'; return; }
+  ITEMS.push({n,z:null,mine:true}); order.push(ITEMS.length-1); inp.value=''; clearMarks(); renderQuad();
+}
+function removeMine(i){
+  /* i より後ろの番号を1つずつつめる */
+  const np={}; Object.keys(place).forEach(k=>{ k=+k; if(k<i) np[k]=place[k]; else if(k>i) np[k-1]=place[k]; });
+  place=np; ITEMS.splice(i,1); order=order.filter(k=>k!==i).map(k=>k>i?k-1:k);
+  if(sel===i) sel=null; else if(sel!==null&&sel>i) sel--;
+  clearMarks(); renderQuad();
+}
+document.getElementById('addCard').onclick=addMine;
+document.getElementById('myCard').addEventListener('keydown',e=>{ if(e.key==='Enter') addMine(); });
 document.getElementById('check3').onclick=()=>{
   const msg=document.getElementById('qmsg');
   const left=ITEMS.length-Object.keys(place).length;
   if(left>0){ bubu(); msg.innerHTML=`<span style="color:var(--ng)">あと${left}まい、おいていないカードがあるよ。</span>`; return; }
-  let same=0; const diffs=[];
+  let same=0; const diffs=[]; let mineN=0;
   document.querySelectorAll('.zone .card').forEach(c=>{
-    const i=ITEMS.findIndex(it=>it.n===c.textContent);
+    const i=+c.dataset.i;
+    if(ITEMS[i].mine){ c.classList.add('own'); mineN++; return; }
     if(ITEMS[i].z===place[i]){ c.classList.add('match'); same++; } else { c.classList.add('diff'); diffs.push(ITEMS[i]); }
   });
-  if(same===ITEMS.length){ pinpon(); party(); msg.innerHTML='<b style="color:var(--ok)">教科書の例とぜんぶ同じ！</b> 2つの観点で、町のことがすっきりわけられたね。'; }
+  const mineMsg = mineN ? `<br><span style="color:var(--gl-ink)">むらさきのカード（じぶんで足したカード）は教科書にないよ。なぜそこにおいたか、説明してみよう。</span>` : '';
+  if(same===BASE){ pinpon(); party(); msg.innerHTML='<b style="color:var(--ok)">教科書の例とぜんぶ同じ！</b> 2つの観点で、町のことがすっきりわけられたね。'+mineMsg; }
   else{
     pinpon();
-    msg.innerHTML=`<b style="color:var(--ok)">${same}まい</b>が教科書と同じ。<span style="color:var(--warn)">オレンジのカード</span>は教科書だと「${diffs.map(d=>d.n+'→'+ZN[d.z]).join('」「')}」。<br>考えがちがってもOK！なぜそこにおいたか、友だちと説明し合おう。`;
+    msg.innerHTML=`<b style="color:var(--ok)">${same}まい</b>が教科書と同じ。<span style="color:var(--warn)">オレンジのカード</span>は教科書だと「${diffs.map(d=>d.n+'→'+ZN[d.z]).join('」「')}」。<br>考えがちがってもOK！なぜそこにおいたか、友だちと説明し合おう。${mineMsg}`;
   }
 };
-document.getElementById('reset3').onclick=()=>{ place={}; sel=null; order=shuffle(ITEMS.map((_,i)=>i)); clearMarks(); renderQuad(); };
+document.getElementById('reset3').onclick=()=>{ place={}; sel=null; ITEMS.splice(BASE); order=shuffle(ITEMS.map((_,i)=>i)); clearMarks(); renderQuad(); };
 renderQuad();
 /* ===== ⑤ 重要語句（社会科ひな形5と同じ）=====
    説明文の書き方：[漢字:よみ] でふりがな、{ … } で赤い字。「。」ごとに行を分けて出す。
